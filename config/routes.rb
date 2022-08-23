@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   
+  post 'books' => 'lists#create'
+  
   get "/homes/about" => "homes#about", as: "about"
   
   
