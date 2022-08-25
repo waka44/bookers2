@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     end
     
     def index
-        @books = Books.index
+        @books = Books.all
     end
     
     def show
@@ -22,10 +22,16 @@ class BooksController < ApplicationController
         @books = Books.edit
     end
     
+    def destroy
+        @books = Books.find(params[:id])
+        books.destroy
+        redirect_to '/books'
+    end
+    
     private
     
     def book_params
-        params.require(:book).permit(:title, :body, :image)
+        params.require(:book).permit(:title, :body, :image, :user_id)
     end
     
 end
